@@ -1,0 +1,23 @@
+{
+  "name": "srp-bot",
+  "version": "1.0.0",
+  "description": "Discord bot providing assetto corsa server status data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs",
+  "author": "chris and l.#2940",
+  "license": "ISC",
+  "dependencies": {
+    "bad-words": "^3.0.4",
+    "cmds": "0.0.3",
+    "discord.js": "^14.7.1",
+    "dotenv": "^10.0.0",
+    "fs": "0.0.1-security",
+    "jsdom": "^16.6.0",
+    "node": "^16.1.0",
+    "node-fetch": "^2.6.1",
+    "requirejs": "^2.3.6"
+  }
+}

@@ -1,0 +1,7 @@
+{
+	"token": "secret token",
+	"clientId": "client id",
+	"guildId": "guild id",
+    "botId": "botid",
+    "configChannels": "your status channels"
+}
