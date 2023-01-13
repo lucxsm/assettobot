@@ -21,9 +21,11 @@ const updateServerInfo = async (client) => {
             try {
                 const serverData = await api.fetchInfo(address);
                 const newMessage = Object.assign(embed);
+                const timestampEdit = new Date();
                 newMessage.fields.find(field => field.name === 'Players:').value = `:busts_in_silhouette: ${serverData.currentPlayers || 0}/${serverData.maxPlayers || 0}`;
                 newMessage.fields.find(field => field.name === 'Status:').value = serverData.status;
-                newMessage.timestamp = new Date();
+                newMessage.data.timestamp = timestampEdit;
+                console.log(newMessage)
                 await msg.edit({ embeds: [newMessage] });
             } catch (error) {
                 console.error('Something went wrong while trying to edit the server info message: ', error);

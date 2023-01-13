@@ -7,10 +7,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('serveradd')
 		.setDescription('Add a new server spectator')
-        .addStringOption(option =>
-			option.setName('channelid')
-				.setDescription('Channel ID')
-				.setRequired(true))
+        .addChannelOption(option =>
+            option.setName('channelid')
+                .setDescription('The channel to echo into')
+                .setRequired(true))
         .addStringOption(option =>
 			option.setName('name')
 				.setDescription('Name of the Server')
@@ -28,8 +28,10 @@ module.exports = {
                 .setDescription('Description of Server')
                 .setRequired(true)),
 	async execute(interaction) {
-        const channelId = interaction.options.getString('channelid');
-        const channel = interaction.guild.channels.cache.get(channelId);
+    
+        const channelId = interaction.options.getChannel('channelid');
+        console.log(channelId.id)
+        const channel = interaction.guild.channels.cache.get(channelId.id);
 
         const serverName =  interaction.options.getString('name');
         const address =  interaction.options.getString('address');

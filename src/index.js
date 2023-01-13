@@ -7,7 +7,7 @@ const { botId, clientId, guildId, token, configChannels } = require('./config.js
 
 dotenv.config();
 
-global.infoScheduleDelay = 30000; // every minute
+global.infoScheduleDelay = 60000; // every minute
 global.leaderboardScheduleDelay = 300000; // every five minutes
 global.botId = String(botId);
 global.channels = String(configChannels).split(',');
