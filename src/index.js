@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 const fs = require('fs');
 const scheduler = require('./scheduler.js');
 const path = require('path');
@@ -13,8 +13,14 @@ global.botId = String(botId);
 global.channels = String(configChannels).split(',');
 global.bannedWords = String(process.env.BANNED_WORDS).split(',');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
+const client = new Client({ presence: {
+	status: 'idle',
+	afk: false,
+	activities: [{
+		name: 'Assetto Servers',
+		type: ActivityType.Competing 
+	}],
+}, intents: [GatewayIntentBits.Guilds] });
 
 
 client.commands = new Collection();
@@ -32,6 +38,9 @@ for (const file of commandFiles) {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
 }
+
+
+
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 

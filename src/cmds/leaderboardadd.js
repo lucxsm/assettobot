@@ -1,5 +1,6 @@
 const leaderboard = require('../leaderboard.js')
 const { SlashCommandBuilder } = require('discord.js');
+const { allowedRole } = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,6 +23,12 @@ module.exports = {
                 .setDescription('http://54.37.245.203:54301/lapstat<queryParams>')
                 .setRequired(true)),
 	async execute(interaction) {
+
+        if(!interaction.member.roles.cache.has(allowedRole)){
+
+            interaction.reply('You have no Permission to do that!');
+            return false;
+        }
     
         const channelId = interaction.options.getChannel('channelid');
         console.log(channelId.id)
@@ -33,8 +40,10 @@ module.exports = {
 
 
         try {
+            interaction.reply('Successfully created!');
             const embed = await leaderboard(url, description, name)
             channel.send({ embeds: [embed] })
+        
         } catch (error) {
             interaction.reply('Could not add that leaderboard boss man, sorry.')
             console.error(error)

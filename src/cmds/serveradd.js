@@ -2,6 +2,7 @@ const api = require('../api.js')
 const nationalities = require('../nationalities.js')
 const getServerInfo = require('../serverinfo.js')
 const { SlashCommandBuilder } = require('discord.js');
+const { allowedRole } = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -29,6 +30,12 @@ module.exports = {
                 .setRequired(true)),
 	async execute(interaction) {
     
+        if(!interaction.member.roles.cache.has(allowedRole)){
+
+            interaction.reply('You have no Permission to do that!');
+            return false;
+        }
+
         const channelId = interaction.options.getChannel('channelid');
         console.log(channelId.id)
         const channel = interaction.guild.channels.cache.get(channelId.id);
