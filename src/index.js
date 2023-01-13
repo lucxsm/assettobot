@@ -7,8 +7,8 @@ const { botId, clientId, guildId, token, configChannels } = require('./config.js
 
 dotenv.config();
 
-global.infoScheduleDelay = 60000; // every minute
-global.leaderboardScheduleDelay = 300000; // every five minutes
+global.infoScheduleDelay = 15000; // every minute
+global.leaderboardScheduleDelay = 15000; // every five minutes
 global.botId = String(botId);
 global.channels = String(configChannels).split(',');
 global.bannedWords = String(process.env.BANNED_WORDS).split(',');
@@ -57,13 +57,13 @@ const scheduleServerInfoUpdates = () => setTimeout(async () => {
     scheduleServerInfoUpdates()
 }, global.infoScheduleDelay)
 
-/*
+
 const scheduleLeaderboardUpdates = () => setTimeout(async () => {
     await scheduler.updateLeaderboards(client)
     scheduleLeaderboardUpdates()
-}, global.leaderboardScheduleDelay) */
+}, global.leaderboardScheduleDelay) 
 
 scheduleServerInfoUpdates()
-//scheduleLeaderboardUpdates()
+scheduleLeaderboardUpdates()
 
 client.login(token).then(() => console.log('Connected'));
