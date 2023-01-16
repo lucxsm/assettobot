@@ -6,7 +6,7 @@ const utils = require('./utils.js');
 const {JSDOM} = pkg;
 
 const CAR_NAME_MAPPING = {
-    'ktyu_c8_lav_s1': 'C8 Laviolette Shuto Spec',
+    'mnba_bmw_m5_f90_competition': 'BMW M5 F90 Competition',
     'nissan_skyline_r34_omori_factory_s1': 'Skyline GT-R R34 Nismo Omori Factory S1',
     'srp_honda_s2000_legendary': 'S2000 (AP2 - Legendary)',
     'fgg_mitsubishi_evo_5_wangan': 'Lancer Evolution V Wangan Spec',
@@ -105,15 +105,16 @@ module.exports = async (strackerUrl, description, name) => {
         })
     }
 
+	const timeStamp = new Date();
     return new EmbedBuilder()
-        .setColor('#c15f6e')
+        .setColor('#42e3f5')
         .setTitle('Leaderboard Link')
         .setDescription(description)
         .setURL(strackerUrl)
-        .setThumbnail('https://cdn.discordapp.com/attachments/671487944250490902/832189834700652604/newlogob.png')
+        .setThumbnail('https://cdn.discordapp.com/attachments/1055890908761038900/1062129961881849986/al-klein.png')
         .setAuthor({ name: name.startsWith('Leaderboard') ? name : 'Leaderboard: ' + name, iconURL: 'https://cdn.discordapp.com/attachments/1055890908761038900/1062129961881849986/al-klein.png', url: 'https://lucscripts.nl' })
         .addFields(finalFields)
-        .setTimestamp()
+        .setTimestamp(timeStamp)
 }
 
 const parseStrackerHtml = (htmlString) => {
@@ -136,12 +137,12 @@ const decodeHtml = (html) => {
 
 const unavailableMessage = (description, strackerUrl, name) => {
     return new EmbedBuilder()
-        .setColor('#c15f6e')
+        .setColor('#42e3f5')
         .setTitle('Leaderboard Link')
         .setDescription(description)
-        .setThumbnail('https://cdn.discordapp.com/attachments/671487944250490902/832189834700652604/newlogob.png')
+        .setThumbnail('https://cdn.discordapp.com/attachments/1055890908761038900/1062129961881849986/al-klein.png')
         .setAuthor({ name: name.startsWith('Leaderboard') ? name : 'Leaderboard: ' + name, iconURL: 'https://cdn.discordapp.com/attachments/1055890908761038900/1062129961881849986/al-klein.png', url: 'https://lucscripts.nl' })
         .setURL(strackerUrl)
         .addField('Oh no', 'The leaderboard is currently unavailable. Try checking back again later')
-        .setTimestamp()
+        .setTimestamp(timeStamp)
 }

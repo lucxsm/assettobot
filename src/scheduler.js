@@ -39,7 +39,9 @@ const updateLeaderboards = async (client) => {
     const messages = await utils.allMessagesFromChannelList(client)
     const filteredMessages = messages.filter(msg => {
         const embed = msg.embeds[0];
-        if (embed && embed.author && embed.author.name.startsWith('Leaderboard')) {
+
+        
+        if (embed && embed.author.name.startsWith('Leaderboard')) {
           return true;
         }
         return false;
@@ -52,9 +54,10 @@ const updateLeaderboards = async (client) => {
                 const strackerUrl = embed.url
                 const description = embed.description
                 const name = embed.author.name
-    
+				const timestampEdit = new Date();
                 try {
                     const newMessage = await leaderboard(strackerUrl, description, name)
+					newMessage.data.timestamp = timestampEdit;
                     await msg.edit({ embeds: [newMessage] })
                 } catch (error) {
                     console.error('An error occurred while trying to update the leaderboard message', error)
