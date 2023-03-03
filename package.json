@@ -1,5 +1,5 @@
 {
-  "name": "srp-bot",
+  "name": "assettobot",
   "version": "1.0.0",
   "description": "Discord bot providing assetto corsa server status data",
   "main": "index.js",
