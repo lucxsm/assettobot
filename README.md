@@ -1,7 +1,7 @@
 # assettobot
 ![img123](https://img.shields.io/github/stars/lucxsm/assettobot?style=for-the-badge)
 ![img321](https://img.shields.io/github/repo-size/lucxsm/assettobot?style=for-the-badge)
-![discord](https://img.shields.io/discord/798615921681104996?style=for-the-badge)
+![discord](https://img.shields.io/discord/993538816965083206?style=for-the-badge)
 
 A updated Version from SRP-Bot with the latest Discord.js
 
