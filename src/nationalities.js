@@ -14,7 +14,8 @@ const COUNTRY_MAPPING = {
     'nl': {flag: ':flag_nl:', name: 'Netherlands'},
     'au': {flag: ':flag_au:', name: 'Australia'},
     'tr': {flag: ':flag_tr:', name: 'Turkey'},
-    'jp': {flag: ':flag_jp:', name: 'Japan'}
+    'jp': {flag: ':flag_jp:', name: 'Japan'},
+    'id': {flag: ':flag_id:', name: 'Indonesia'}
 }
 
 const getCountry = (countryKey) => COUNTRY_MAPPING[countryKey.toLowerCase()]
